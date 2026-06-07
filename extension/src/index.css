@@ -1,0 +1,194 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: dark;
+  --bg-primary: #292828;
+  --bg-secondary: rgba(10, 15, 26, 0.5);
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --border-glass: rgba(255, 255, 255, 0.1);
+  --text-primary: #f3f4f6;
+  --text-secondary: #9ca3af;
+  --color-accent: #6366f1;
+  --color-accent-hover: #4f46e5;
+  --focus-glow: rgba(99, 102, 241, 0.4);
+  --shadow-neon: 0 0 15px rgba(99, 102, 241, 0.4);
+  --card-bg: rgba(255, 255, 255, 0.03);
+  --card-border: rgba(255, 255, 255, 0.06);
+  --card-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+  --title-gradient: linear-gradient(to right, #a5b4fc, #6366f1);
+
+  /* Task Urgency Gradients */
+  --grad-safe: linear-gradient(135deg, #10b981, #059669);
+  --grad-warning: linear-gradient(135deg, #f59e0b, #d97706);
+  --grad-high: linear-gradient(135deg, #f97316, #ea580c);
+  --grad-critical: linear-gradient(135deg, #ef4444, #dc2626);
+  --grad-overdue: linear-gradient(135deg, #1f2937, #111827);
+
+  /* Progress and Status colors */
+  --progress-safe: #10b981;
+  --progress-warning: #f59e0b;     /* Warm amber/gold for dark mode */
+  --progress-danger: #ef4444;
+  --countdown-warning-text: #1e293b;
+
+  /* Scrollbar Colors (Dark Mode) */
+  --scrollbar-track: rgba(10, 15, 26, 0.45);
+  --scrollbar-thumb: rgba(99, 102, 241, 0.6); /* Brand accent purple */
+  --scrollbar-thumb-hover: rgba(99, 102, 241, 0.95);
+}
+
+.light-theme {
+  color-scheme: light;
+  --bg-primary: #f4f6fa;
+  --bg-secondary: rgba(255, 255, 255, 0.6);
+  --bg-glass: rgba(0, 0, 0, 0.04);
+  --border-glass: rgba(0, 0, 0, 0.1);
+  --text-primary: #1e293b;
+  --text-secondary: #64748b;
+  --color-accent: #4f46e5;
+  --color-accent-hover: #4338ca;
+  --focus-glow: rgba(79, 70, 229, 0.3);
+  --shadow-neon: 0 0 15px rgba(79, 70, 229, 0.25);
+  --card-bg: #ffffff;
+  --card-border: rgba(0, 0, 0, 0.06);
+  --card-shadow: 0 4px 14px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --title-gradient: linear-gradient(to right, #4f46e5, #818cf8);
+
+  /* Progress and Status colors - light theme */
+  --progress-safe: #10b981;
+  --progress-warning: #d97706;     /* Darker gold/amber for readability in light mode */
+  --progress-danger: #ef4444;
+  --countdown-warning-text: #ffffff;
+
+  /* Scrollbar Colors (Light Mode) */
+  --scrollbar-track: rgba(0, 0, 0, 0.04);
+  --scrollbar-thumb: rgba(79, 70, 229, 0.5); /* Brand light accent purple */
+  --scrollbar-thumb-hover: rgba(79, 70, 229, 0.85);
+}
+
+.theme-wrapper {
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  overflow: hidden;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 760px;
+  height: 600px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  overflow: hidden !important;
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb);
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* Glassmorphism Container */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  background: radial-gradient(circle at top right, rgba(99, 102, 241, 0.15), transparent 60%);
+  padding: 16px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes pulseGlow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 10px rgba(239, 68, 68, 0.5), inset 0 0 10px rgba(255, 255, 255, 0.1);
+  }
+
+  50% {
+    box-shadow: 0 0 22px rgba(239, 68, 68, 0.8), inset 0 0 15px rgba(255, 255, 255, 0.2);
+  }
+}
+
+/* Typography & Titles */
+h1 {
+  font-size: 20px;
+  font-weight: 700;
+  background: var(--title-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+
+h2 {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
