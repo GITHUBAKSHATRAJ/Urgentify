@@ -1,0 +1,49 @@
+/* Edit Screen and Card Clickable Styles */
+.clickable-card {
+  cursor: pointer;
+}
+
+.edit-screen-container {
+  animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-scroll-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.btn-back {
+  background: transparent;
+  border: none;
+  color: var(--color-accent);
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  padding: 4px 0;
+  transition: all 0.2s ease;
+}
+
+.btn-back:hover {
+  color: var(--text-primary);
+  transform: translateX(-2px);
+}
+
+.metadata-banner {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border-glass);
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 11px;
+  color: var(--text-secondary);
+  margin-bottom: 12px;
+}
+
+.metadata-banner span {
+  font-weight: 500;
+  color: var(--text-primary);
+}
