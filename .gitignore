@@ -1,0 +1,13 @@
+# Node.js
+node_modules/
+.env
+
+# MacOS
+.DS_Store
+
+# Mobile / React Native / Expo
+.expo/
+dist/
+npm-debug.*
+yarn-debug.*
+yarn-error.*
