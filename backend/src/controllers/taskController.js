@@ -33,6 +33,12 @@ async function createTask(req, res, next) {
       customNotificationUnit: customNotificationUnit || 'none'
     });
 
+    // Broadcast new task to user's room
+    const io = req.app.get('io');
+    if (io) {
+      io.to(req.user._id.toString()).emit('taskCreated', task);
+    }
+
     res.status(201).json({
       success: true,
       data: task
@@ -93,6 +99,12 @@ async function updateTask(req, res, next) {
 
     const updatedTask = await task.save();
 
+    // Broadcast updated task to user's room
+    const io = req.app.get('io');
+    if (io) {
+      io.to(req.user._id.toString()).emit('taskUpdated', updatedTask);
+    }
+
     res.status(200).json({
       success: true,
       data: updatedTask
@@ -124,6 +136,12 @@ async function deleteTask(req, res, next) {
 
     // Delete task from DB
     await task.deleteOne();
+
+    // Broadcast deleted task ID to user's room
+    const io = req.app.get('io');
+    if (io) {
+      io.to(req.user._id.toString()).emit('taskDeleted', req.params.id);
+    }
 
     res.status(200).json({
       success: true,
@@ -165,6 +183,12 @@ async function acknowledgeAlarm(req, res, next) {
     }
 
     const updatedTask = await task.save();
+
+    // Broadcast alarm acknowledgment to user's room
+    const io = req.app.get('io');
+    if (io) {
+      io.to(req.user._id.toString()).emit('taskUpdated', updatedTask);
+    }
 
     res.status(200).json({
       success: true,
