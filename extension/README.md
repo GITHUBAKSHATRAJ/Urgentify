@@ -1,16 +1,42 @@
-# React + Vite
+# Urgentify Chrome Extension
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the official Chrome Extension client for the Urgentify ecosystem. It serves as a visual urgency dashboard that directly replaces the "New Tab" page in Chrome, leveraging dynamic color-shifting and WebSockets to combat "deadline blindness".
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- **Frontend Library:** React 18
+- **Bundler:** Vite (configured for Manifest V3)
+- **Real-Time Engine:** Socket.io-client
+- **Styling:** Modular Vanilla CSS
+- **Architecture:** Folder-per-Component (Enterprise Standard)
 
-## React Compiler
+## 📁 Architecture & React Concepts
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+This project strictly adheres to Enterprise React standards, utilizing the **Folder-per-Component** pattern. Every component lives in its own isolated directory containing its UI logic, CSS styles, and an `index.jsx` barrel export.
 
-## Expanding the ESLint configuration
+Key React patterns utilized in this codebase:
+- **Container vs Presentational Components:** `Dashboard.jsx` acts as the "Smart Container" handling WebSockets and state, while children like `TaskCard.jsx` are purely "Presentational".
+- **Controlled Components:** All inputs and forms (e.g., `Auth.jsx`, `TaskForm.jsx`) are strictly controlled by React state.
+- **Inverse Data Flow:** Children bubble events up to parents rather than handling complex logic themselves.
+- **Derived State:** Mathematical data (like the Overlap Timeline grid) is derived on the fly from props to prevent redundant `useState` bugs.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## 🛠️ How to Build & Install
+
+Because this is a Manifest V3 Chrome Extension, you cannot just run a standard web server to view it. It must be built and loaded into Chrome.
+
+### 1. Build the Extension
+Whenever you make a change to the code, you must build the production bundle:
+```bash
+cd extension
+npm run build
+```
+This will compile all your React code and output it into the `dist/` directory.
+
+### 2. Load into Chrome
+1. Open Google Chrome and navigate to `chrome://extensions/`
+2. Enable **Developer Mode** (toggle in the top right corner).
+3. Click **Load unpacked** in the top left.
+4. Select the `dist/` folder located inside the `extension/` directory (`Urgentify/extension/dist`).
+
+### 3. Updating During Development
+When you write new code, simply run `npm run build` again, then go back to `chrome://extensions/` and click the circular **Reload** (↻) button on the Urgentify extension card to see your changes!
