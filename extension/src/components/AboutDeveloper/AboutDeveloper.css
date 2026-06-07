@@ -1,0 +1,108 @@
+/* About Developer Screen Styling */
+.dev-screen-container {
+  animation: scaleIn 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.dev-scroll-container {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 2px;
+}
+
+.dev-profile-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 16px 0 24px 0;
+  padding: 24px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-glass);
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.dev-avatar-wrapper {
+  width: 86px;
+  height: 86px;
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  box-shadow: var(--shadow-neon);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  background: var(--bg-primary);
+}
+
+.dev-avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dev-name {
+  font-size: 22px;
+  font-weight: 700;
+  background: var(--title-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin-bottom: 4px;
+}
+
+.dev-title {
+  font-size: 12.5px;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.dev-section {
+  margin-bottom: 24px;
+}
+
+.dev-section h3 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-secondary);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.dev-bio {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+}
+
+.tech-badges-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tech-badge {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.dev-connect-action {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+.btn-linkedin-connect {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-family: inherit;
+}
