@@ -182,6 +182,7 @@ h1 {
   font-weight: 700;
   background: var(--title-gradient);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
   margin-bottom: 4px;
 }
