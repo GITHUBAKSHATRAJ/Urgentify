@@ -11,3 +11,19 @@ dist/
 npm-debug.*
 yarn-debug.*
 yarn-error.*
+
+# IDE & Editor Configurations
+.idea/
+.vscode/
+.claude/
+mobile/.claude/
+mobile/.vscode/
+
+# Local logs
+*.log
+mobile/build_full.log
+mobile/stacktrace.log
+
+# Scratch folders
+backend/scratch/
+scratch/
